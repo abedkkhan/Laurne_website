@@ -1,22 +1,29 @@
 # Lauren Gorman — Flautist website
 
-A clean, responsive, single-page website (works on laptop and mobile) for a
-flautist / performer / flute teacher. Plain HTML, CSS and JavaScript — no build
-step — so it hosts directly on **GitHub Pages** and any custom domain.
+A clean, responsive, **multi-page** website (works on laptop and mobile) for a
+flautist / performer / flute teacher, in a dark *charcoal & gold* theme. Plain
+HTML, CSS and JavaScript — no build step — so it hosts directly on **GitHub
+Pages** and any custom domain.
 
 ## File structure
 
 ```
-index.html              ← all the page content (edit text here)
+index.html              ← Home (full-screen image hero)
+about.html              ← About / journey + flute lessons
+music.html              ← Music (SoundCloud players)
+events.html             ← Upcoming events
+gallery.html            ← Photo gallery (click to enlarge)
+contact.html            ← Contact details, form & newsletter subscribe
 assets/
-  css/style.css         ← all styling / colours / fonts
+  css/style.css         ← all styling / colours / fonts (theme at the top)
   js/main.js            ← menu, scroll animations, gallery lightbox
   img/lauren-12.jpg     ← your photos go here
 .nojekyll               ← tells GitHub Pages to serve files as-is
 ```
 
-Everything you'll normally edit is in **`index.html`**. Search the file for
-`TODO:` to find each spot that needs your real content.
+Each page is its own file. The top menu and footer are repeated in every file,
+so if you change a menu link, change it in all of them. Search any page for
+`TODO:` to find spots that need your real content.
 
 ---
 
@@ -37,20 +44,27 @@ Then visit **http://localhost:8000**.
 
 ## 2. Replace the placeholder content
 
-Open `index.html` and update the items marked `TODO:`
+Update the items marked `TODO:` on each page:
 
-| What | Where |
-|------|-------|
-| Your bio / journey | "About" section |
-| Lesson details | "Flute lessons" card |
-| Email, phone, city | "Contact" section |
-| Social links (Instagram, Facebook, SoundCloud) | `href="#"` in the Contact section |
-| Event dates & details | "Events" section |
+| What | File |
+|------|------|
+| Your bio / journey | `about.html` |
+| Lesson details | `about.html` ("Flute lessons") |
+| Email, phone, city | `contact.html` |
+| Social links (Instagram, Facebook, SoundCloud) | `href="#"` in `contact.html` |
+| Event dates & details | `events.html` |
+| Home hero tagline | `index.html` |
 
-### Photos (Gallery + Hero)
+### Photos (Home hero + Gallery)
+
+**Home hero image:** the big home image is set in `assets/css/style.css` — find
+`.hero-bg` and change the `background-image` filename to your photo (a wide /
+landscape performance shot works best). Adjust `background-position` to frame it.
+
+**Gallery photos:**
 
 1. Drop your image files into `assets/img/` (e.g. `gallery-2.jpg`).
-2. In the Gallery section, change a placeholder figure:
+2. In `gallery.html`, change a placeholder figure:
    ```html
    <figure class="gallery-item placeholder reveal"><span>Add a photo</span></figure>
    ```
@@ -66,7 +80,7 @@ Open `index.html` and update the items marked `TODO:`
 
 1. On SoundCloud, open a track or playlist → **Share → Embed**.
 2. Copy the `<iframe …>` code it gives you.
-3. Paste it over the existing `<iframe>` inside a `.music-item` in the Music section.
+3. Paste it over the existing `<iframe>` inside a `.music-item` in `music.html`.
 
 ---
 
@@ -77,7 +91,7 @@ The Subscribe and Contact forms post to **[Formspree](https://formspree.io)** (f
 1. Sign up at formspree.io and create **two forms** (one for "Contact", one for
    "Subscribe") — or one form reused for both.
 2. Each form gives you an ID that looks like `xayzwabc`.
-3. In `index.html`, replace:
+3. In `contact.html`, replace:
    - `YOUR_CONTACT_FORM_ID` → your contact form ID
    - `YOUR_SUBSCRIBE_FORM_ID` → your subscribe form ID
 
