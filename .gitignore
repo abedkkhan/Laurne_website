@@ -1,0 +1,10 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local tooling / preview config
+.claude/
+
+# Editor
+.vscode/
+.idea/
