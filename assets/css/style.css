@@ -557,6 +557,7 @@ textarea { resize: vertical; }
 
   .gallery-grid { grid-template-columns: 1fr 1fr; gap: 0.7rem; }
   .subscribe-form { flex-direction: column; }
+  .subscribe-form input { flex: 0 0 auto; width: 100%; } /* avoid 200px flex-basis becoming the height when stacked */
   .subscribe-form .btn { width: 100%; }
 
   /* Inner page headers: trim the empty space at the top */
