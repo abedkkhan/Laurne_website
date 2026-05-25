@@ -199,7 +199,7 @@ body.home .site-header.scrolled {
   z-index: 0;
   background-image: url("../img/lauren-12.jpg");
   background-size: cover;
-  background-position: 50% 28%;
+  background-position: 50% 14%;
   transform: scale(1.04);
 }
 .hero::before {
