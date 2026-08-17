@@ -204,52 +204,67 @@ em { color: var(--text); font-style: italic; }
 .nav-toggle.open span:nth-child(2) { opacity: 0; }
 .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ---------- Hero: split layout, full image ---------- */
+/* ---------- Hero: full-bleed blurred cover with name overlay ---------- */
 .hero {
+  position: relative;
   min-height: 100vh;
   min-height: 100svh;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: stretch;
-  background: var(--bg);
-  color: var(--text);
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  text-align: center;
+  background: var(--bg);
 }
 .hero-image {
-  height: 100vh;
-  height: 100svh;
-  width: auto;
-  max-width: 65vw;
-  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  /* No overlay — the whole photo is meant to be visible */
+  object-position: 50% 25%;
+  filter: blur(6px) saturate(0.95);
+  transform: scale(1.08); /* hide the transparent edge blur leaves behind */
+  z-index: 0;
+  will-change: transform;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse at center, rgba(15,12,9,0.35) 0%, rgba(15,12,9,0.7) 90%),
+    linear-gradient(to bottom, rgba(15,12,9,0.35) 0%, rgba(15,12,9,0.6) 100%);
 }
 .hero-content {
-  padding: calc(var(--header-h) + 2rem) 4rem 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 640px;
+  position: relative;
+  z-index: 2;
+  padding: calc(var(--header-h) + 1rem) 1.6rem 2rem;
+  max-width: 900px;
 }
 .hero .eyebrow {
   color: var(--accent);
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.3rem;
 }
 .hero h1 {
   font-family: var(--serif);
-  font-size: clamp(3rem, 6vw, 5.4rem);
+  font-size: clamp(3.4rem, 9vw, 7rem);
   line-height: 1.02;
-  color: var(--text);
+  color: #fff;
   margin: 0 0 1rem;
+  letter-spacing: 0.01em;
+  text-shadow: 0 4px 40px rgba(0, 0, 0, 0.35);
 }
 .hero .hero-sub {
   font-family: var(--sans);
   font-weight: 400;
-  font-size: 0.82rem;
-  letter-spacing: 0.3em;
+  font-size: 0.85rem;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: var(--muted);
-  margin: 0.6rem 0 0;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 1.1rem 0 0;
 }
 
 /* ---------- Sections ---------- */
@@ -588,27 +603,8 @@ textarea { resize: vertical; }
    Responsive
    ========================================================= */
 @media (max-width: 900px) {
-  /* Hero: stacked — full image on top, text below on dark bg */
-  .hero {
-    grid-template-columns: 1fr;
-    align-items: start;
-    min-height: auto;
-  }
-  .hero-image {
-    width: 100%;
-    height: auto;
-    max-width: none;
-    max-height: 70vh;
-    object-fit: cover;
-    object-position: center 20%;
-  }
-  .hero-content {
-    padding: 2.4rem 1.5rem 3.2rem;
-    text-align: center;
-    align-items: center;
-    max-width: none;
-  }
-  .hero .hero-sub { align-self: center; }
+  /* Hero: same full-bleed treatment scales down naturally */
+  .hero-image { object-position: 50% 22%; filter: blur(5px) saturate(0.95); }
 
   .about-grid,
   .lessons-grid,
@@ -661,9 +657,8 @@ textarea { resize: vertical; }
 
   /* Hero mobile */
   .hero .eyebrow { font-size: 0.64rem; letter-spacing: 0.24em; margin-bottom: 0.7rem; }
-  .hero h1 { font-size: clamp(2.4rem, 10.5vw, 3rem); }
-  .hero .hero-sub { font-size: 0.7rem; letter-spacing: 0.24em; }
-  .hero-image { max-height: 65vh; }
+  .hero h1 { font-size: clamp(2.8rem, 12vw, 3.6rem); line-height: 1.06; }
+  .hero .hero-sub { font-size: 0.7rem; letter-spacing: 0.24em; margin-top: 0.9rem; }
 }
 
 /* Reduced motion */
