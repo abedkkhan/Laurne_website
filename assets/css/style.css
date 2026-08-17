@@ -224,10 +224,7 @@ em { color: var(--text); font-style: italic; }
   height: 100%;
   object-fit: cover;
   object-position: 50% 25%;
-  filter: blur(6px) saturate(0.95);
-  transform: scale(1.08); /* hide the transparent edge blur leaves behind */
   z-index: 0;
-  will-change: transform;
 }
 .hero::after {
   content: "";
@@ -604,7 +601,7 @@ textarea { resize: vertical; }
    ========================================================= */
 @media (max-width: 900px) {
   /* Hero: same full-bleed treatment scales down naturally */
-  .hero-image { object-position: 50% 22%; filter: blur(5px) saturate(0.95); }
+  .hero-image { object-position: 50% 22%; }
 
   .about-grid,
   .lessons-grid,
