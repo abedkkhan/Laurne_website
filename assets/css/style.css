@@ -197,10 +197,10 @@ body.home .site-header.scrolled {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-image: url("../img/lauren-12.jpg");
+  background-image: url("../img/cover.jpg");
   background-size: cover;
-  background-position: 50% 14%;
-  transform: scale(1.04);
+  background-position: 50% 25%;
+  transform: scale(1.02);
 }
 .hero::before {
   content: "";
@@ -231,6 +231,15 @@ body.home .site-header.scrolled {
   max-width: 38ch;
   margin-bottom: 2.2rem;
   font-weight: 300;
+}
+.hero .hero-sub {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 0.82rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0.7rem 0 0;
 }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; }
 
