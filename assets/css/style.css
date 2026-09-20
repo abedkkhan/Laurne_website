@@ -136,70 +136,44 @@ em { color: var(--text); font-style: italic; }
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 50;
-  padding: 0.7rem 0;
-  background: rgba(22, 19, 15, 0.65);
-  backdrop-filter: saturate(140%) blur(12px);
-  -webkit-backdrop-filter: saturate(140%) blur(12px);
-  border-bottom: 1px solid transparent;
-  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease);
-}
-.site-header.scrolled {
-  background: rgba(22, 19, 15, 0.88);
-  border-bottom-color: var(--line);
+  padding: 1.2rem 0;
+  background: transparent;
+  border: 0;
 }
 .header-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;   /* centered nav like Cassie */
+  position: relative;
 }
 .brand {
-  font-family: var(--serif);
-  font-size: 1.55rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--text);
+  /* Hidden — Cassie-style; the hero name is the wordmark on Home */
+  display: none;
 }
-.nav { display: flex; gap: 0.3rem; }
+.nav { display: flex; gap: 2.2rem; }
 .nav a {
   font-family: var(--sans);
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--text);
-  padding: 0.7rem 1.05rem;
-  border-radius: 999px;
-  position: relative;
-  opacity: 0.9;
-  transition: color var(--dur) var(--ease),
-              background var(--dur) var(--ease),
-              opacity var(--dur) var(--ease),
-              transform var(--dur) var(--ease-out);
+  padding: 0.4rem 0;
+  opacity: 0.85;
+  transition: color var(--dur) var(--ease), opacity var(--dur) var(--ease);
 }
-.nav a:hover {
-  color: var(--accent);
-  background: rgba(201, 163, 94, 0.10);
-  opacity: 1;
-  transform: translateY(-1px);
-}
+.nav a:hover,
 .nav a.active {
   color: var(--accent);
   opacity: 1;
-  background: rgba(201, 163, 94, 0.12);
-}
-.nav a.active::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 3px;
-  transform: translateX(-50%);
-  width: 5px; height: 5px;
-  border-radius: 50%;
-  background: var(--accent);
 }
 
 .nav-toggle {
   display: none;
+  position: absolute;
+  right: 1.6rem;
+  top: 50%;
+  transform: translateY(-50%);
   flex-direction: column;
   gap: 5px;
   background: none;
