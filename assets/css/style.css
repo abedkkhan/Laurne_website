@@ -231,27 +231,38 @@ em { color: var(--text); font-style: italic; }
   text-align: center;
   background: var(--bg);
 }
+/* Blurred, zoomed copy of the cover fills the whole hero — makes the
+   letterbox area on either side of the crisp portrait look like a
+   soft extension of the photo, not a separate dark panel. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../img/cover.jpg") center/cover no-repeat;
+  filter: blur(40px) brightness(0.85);
+  transform: scale(1.2);
+  z-index: 0;
+}
 .hero-image {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;         /* desktop: fill the whole page, crop as needed */
-  object-position: 50% 22%;
-  background: var(--bg);
-  z-index: 0;
+  object-fit: contain;       /* show the whole photo */
+  object-position: center;
+  z-index: 1;
 }
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 1;
-  /* Much lighter treatment: soft vignette on the edges, near-transparent in the middle */
+  z-index: 2;
+  /* Soft vignette on the edges, near-transparent in the middle */
   background: radial-gradient(ellipse at center, rgba(15,12,9,0.05) 25%, rgba(15,12,9,0.45) 100%);
 }
 .hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   padding: calc(var(--header-h) + 1rem) 1.6rem 2rem;
   max-width: 900px;
 }
@@ -275,7 +286,7 @@ em { color: var(--text); font-style: italic; }
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2;
+  z-index: 3;
   display: flex;
   gap: 1.4rem;
 }
