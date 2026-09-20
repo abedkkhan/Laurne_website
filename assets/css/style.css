@@ -653,10 +653,22 @@ textarea { resize: vertical; }
    Responsive
    ========================================================= */
 @media (max-width: 900px) {
-  /* Hero on mobile: image fills the width, so feather the top/bottom edges instead */
+  /* Hero on mobile: single full-screen image (no blurred backdrop) */
+  .hero::before { display: none; }
   .hero-image {
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%);
-            mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    position: absolute;
+    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    object-fit: cover;
+    object-position: 30% center;   /* keep Lauren well in frame */
+    transform: none;
+    -webkit-mask-image: none;
+            mask-image: none;
   }
 
   .about-grid,
@@ -683,11 +695,10 @@ textarea { resize: vertical; }
     transition: transform 0.4s var(--ease-out);
   }
   .nav.open { transform: translateX(0); }
-  .nav a { font-size: 1rem; opacity: 1; }
+  .nav a { font-size: 1rem; opacity: 1; text-shadow: none; }
   .nav-toggle { display: flex; }
-
-  /* Header always solid on mobile */
-  .site-header { background: rgba(14, 14, 14, 0.9); border-bottom-color: var(--line); }
+  /* Give the hamburger a soft dark backing so it's visible over bright parts of the photo */
+  .nav-toggle span { box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6); }
 }
 
 @media (max-width: 560px) {
