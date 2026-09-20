@@ -159,7 +159,8 @@ em { color: var(--text); font-style: italic; }
   text-transform: uppercase;
   color: var(--text);
   padding: 0.4rem 0;
-  opacity: 0.85;
+  opacity: 0.9;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
   transition: color var(--dur) var(--ease), opacity var(--dur) var(--ease);
 }
 .nav a:hover,
@@ -237,8 +238,11 @@ em { color: var(--text); font-style: italic; }
   position: absolute;
   inset: 0;
   z-index: 2;
-  /* Soft vignette on the edges, near-transparent in the middle */
-  background: radial-gradient(ellipse at center, rgba(15,12,9,0.05) 25%, rgba(15,12,9,0.45) 100%);
+  /* Top gradient keeps the nav readable over bright parts of the photo,
+     plus a soft vignette on the edges. */
+  background:
+    linear-gradient(to bottom, rgba(15,12,9,0.55) 0%, rgba(15,12,9,0) 18%),
+    radial-gradient(ellipse at center, rgba(15,12,9,0.05) 25%, rgba(15,12,9,0.45) 100%);
 }
 .hero-content {
   position: relative;
