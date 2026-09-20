@@ -239,23 +239,24 @@ em { color: var(--text); font-style: italic; }
   position: absolute;
   inset: 0;
   background: url("../img/cover.jpg") center/cover no-repeat;
-  filter: blur(40px) brightness(0.85);
-  transform: scale(1.2);
+  filter: blur(24px) brightness(0.9);
+  transform: scale(1.12);
   z-index: 0;
 }
 .hero-image {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  /* scale(1.1) makes Lauren ~10% bigger so she doesn't feel small in the blur zone */
+  transform: translate(-50%, -50%) scale(1.1);
   height: 100%;
   width: auto;
   max-width: 100%;
   max-height: 100%;
   z-index: 1;
   /* Feather the left/right edges into the blurred backdrop */
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%);
-          mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 7%, #000 93%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0%, #000 7%, #000 93%, transparent 100%);
 }
 .hero::after {
   content: "";
