@@ -261,15 +261,34 @@ em { color: var(--text); font-style: italic; }
 }
 .hero h1 {
   font-family: var(--serif);
-  font-size: clamp(3.4rem, 9vw, 7rem);
+  font-size: clamp(3.6rem, 10vw, 8rem);
   line-height: 1.02;
   color: #fff;
-  margin: 0 0 1rem;
+  margin: 0;
   letter-spacing: 0.01em;
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55), 0 6px 40px rgba(0, 0, 0, 0.35);
 }
-.hero .eyebrow { text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5); }
-.hero .hero-sub { text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5); }
+
+/* Social icon row at the bottom of the hero */
+.hero-social {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  gap: 1.4rem;
+}
+.hero-social a {
+  color: rgba(255, 255, 255, 0.85);
+  transition: color var(--dur) var(--ease), transform var(--dur) var(--ease-out);
+  display: inline-flex;
+  padding: 0.4rem;
+}
+.hero-social a:hover {
+  color: var(--accent);
+  transform: translateY(-3px);
+}
 .hero .hero-sub {
   font-family: var(--sans);
   font-weight: 400;
