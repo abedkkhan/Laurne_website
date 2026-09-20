@@ -245,12 +245,17 @@ em { color: var(--text); font-style: italic; }
 }
 .hero-image {
   position: absolute;
-  inset: 0;
-  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   height: 100%;
-  object-fit: contain;       /* show the whole photo */
-  object-position: center;
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
   z-index: 1;
+  /* Feather the left/right edges into the blurred backdrop */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%);
 }
 .hero::after {
   content: "";
@@ -665,8 +670,11 @@ textarea { resize: vertical; }
    Responsive
    ========================================================= */
 @media (max-width: 900px) {
-  /* Hero on mobile: show the whole photo (no cropping) */
-  .hero-image { object-fit: contain; object-position: center; }
+  /* Hero on mobile: image fills the width, so feather the top/bottom edges instead */
+  .hero-image {
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%);
+            mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  }
 
   .about-grid,
   .lessons-grid,
