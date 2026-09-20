@@ -4,18 +4,18 @@
    ========================================================= */
 
 :root {
-  /* Palette */
-  --bg:         #16130f;   /* near-black charcoal        */
-  --bg-alt:     #1c1813;   /* alternating section        */
-  --surface:    #211c16;   /* cards / inputs / raised    */
-  --surface-2:  #2b251d;   /* hover / stronger raised    */
-  --text:       #ece6db;   /* warm off-white             */
-  --text-2:     #d4cbb8;
-  --muted:      #a89f90;
-  --line:       rgba(236, 230, 219, 0.13);
-  --line-2:     rgba(236, 230, 219, 0.22);
-  --accent:     #c9a35e;   /* antique gold               */
-  --accent-dk:  #b08842;
+  /* Palette — monochrome to match the B&W hero */
+  --bg:         #0e0e0e;   /* deep black                 */
+  --bg-alt:     #171717;   /* alternating section        */
+  --surface:    #1e1e1e;   /* cards / inputs / raised    */
+  --surface-2:  #282828;   /* hover / stronger raised    */
+  --text:       #ececec;   /* near-white                 */
+  --text-2:     #cccccc;
+  --muted:      #8a8a8a;
+  --line:       rgba(236, 236, 236, 0.13);
+  --line-2:     rgba(236, 236, 236, 0.22);
+  --accent:     #ffffff;   /* pure white for accents     */
+  --accent-dk:  #cfcfcf;
   --white:      #ffffff;
 
   /* Fonts */
@@ -107,7 +107,7 @@ em { color: var(--text); font-style: italic; }
 
 .btn-primary {
   background: var(--accent);
-  color: #1a1610;
+  color: #000;
   border-color: var(--accent);
 }
 .btn-primary:hover { background: var(--accent-dk); border-color: var(--accent-dk); }
@@ -241,8 +241,8 @@ em { color: var(--text); font-style: italic; }
   /* Top gradient keeps the nav readable over bright parts of the photo,
      plus a soft vignette on the edges. */
   background:
-    linear-gradient(to bottom, rgba(15,12,9,0.55) 0%, rgba(15,12,9,0) 18%),
-    radial-gradient(ellipse at center, rgba(15,12,9,0.05) 25%, rgba(15,12,9,0.45) 100%);
+    linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 18%),
+    radial-gradient(ellipse at center, rgba(0,0,0,0.05) 25%, rgba(0,0,0,0.45) 100%);
 }
 .hero-content {
   position: relative;
@@ -345,10 +345,13 @@ em { color: var(--text); font-style: italic; }
 }
 .about-portrait img {
   width: 100%;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
   aspect-ratio: 3 / 4;
   object-fit: cover;
+  object-position: 50% 30%;    /* tighter framing: face + flute + hands */
+  filter: grayscale(1) contrast(1.03);
+  /* Soft radial fade so the image edges dissolve into the black background */
+  -webkit-mask-image: radial-gradient(ellipse 90% 90% at 50% 45%, #000 55%, transparent 100%);
+          mask-image: radial-gradient(ellipse 90% 90% at 50% 45%, #000 55%, transparent 100%);
 }
 .about-body h2 { font-size: clamp(2rem, 4vw, 2.6rem); margin-bottom: 1.3rem; }
 .about-body p { font-size: 1.12rem; color: var(--text-2); }
@@ -415,7 +418,7 @@ em { color: var(--text); font-style: italic; }
   transition: background var(--dur) var(--ease);
 }
 .event:first-child { border-top: 1px solid var(--line); }
-.event:hover { background: rgba(201, 163, 94, 0.05); }
+.event:hover { background: rgba(255, 255, 255, 0.05); }
 .event-date {
   display: flex;
   flex-direction: column;
@@ -541,7 +544,7 @@ input:focus, textarea:focus {
   outline: none;
   border-color: var(--accent);
   background: var(--surface-2);
-  box-shadow: 0 0 0 3px rgba(201,163,94,0.15);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.15);
 }
 textarea { resize: vertical; }
 
@@ -644,7 +647,7 @@ textarea { resize: vertical; }
 .reveal-stagger.in-view > *:nth-child(5) { transition-delay: 0.41s; }
 .reveal-stagger.in-view > *:nth-child(6) { transition-delay: 0.50s; }
 
-::selection { background: rgba(201, 163, 94, 0.28); color: var(--text); }
+::selection { background: rgba(255, 255, 255, 0.28); color: var(--text); }
 
 /* =========================================================
    Responsive
@@ -684,7 +687,7 @@ textarea { resize: vertical; }
   .nav-toggle { display: flex; }
 
   /* Header always solid on mobile */
-  .site-header { background: rgba(22, 19, 15, 0.9); border-bottom-color: var(--line); }
+  .site-header { background: rgba(14, 14, 14, 0.9); border-bottom-color: var(--line); }
 }
 
 @media (max-width: 560px) {
