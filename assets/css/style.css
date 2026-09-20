@@ -150,13 +150,14 @@ em { color: var(--text); font-style: italic; }
 .header-inner {
   display: flex;
   align-items: center;
-  justify-content: center;   /* Cassie-style centered nav */
-  position: relative;
+  justify-content: space-between;
 }
 .brand {
-  /* Hidden — the huge hero name is the wordmark on Home;
-     inner pages use the nav "Home" to go back. */
-  display: none;
+  font-family: var(--serif);
+  font-size: 1.55rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text);
 }
 .nav { display: flex; gap: 0.3rem; }
 .nav a {
@@ -199,10 +200,6 @@ em { color: var(--text); font-style: italic; }
 
 .nav-toggle {
   display: none;
-  position: absolute;
-  right: 1.6rem;
-  top: 50%;
-  transform: translateY(-50%);
   flex-direction: column;
   gap: 5px;
   background: none;
@@ -234,21 +231,32 @@ em { color: var(--text); font-style: italic; }
   text-align: center;
   background: var(--bg);
 }
-/* Hero uses gallery-2 (dark plain backdrop) so it sits on the page's
-   dark background seamlessly — no blur trick needed. */
+/* Blurred, zoomed copy of the cover fills the whole hero — makes the
+   letterbox area on either side of the crisp portrait look like a
+   soft extension of the photo, not a separate dark panel. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../img/cover.jpg") center/cover no-repeat;
+  filter: blur(16px) brightness(0.92);
+  transform: scale(1.08);
+  z-index: 0;
+}
 .hero-image {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  /* scale(1.1) makes Lauren ~10% bigger so she doesn't feel small in the blur zone */
+  transform: translate(-50%, -50%) scale(1.1);
   height: 100%;
   width: auto;
   max-width: 100%;
   max-height: 100%;
   z-index: 1;
-  /* Feather the left/right edges to be safe against any subtle tonal shift */
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
-          mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  /* Feather the left/right edges into the blurred backdrop */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 7%, #000 93%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0%, #000 7%, #000 93%, transparent 100%);
 }
 .hero::after {
   content: "";
@@ -261,25 +269,22 @@ em { color: var(--text); font-style: italic; }
 .hero-content {
   position: relative;
   z-index: 3;
-  padding: calc(var(--header-h) + 1rem) 1rem 2rem;
-  max-width: none;    /* let the giant name span the viewport */
-  width: 100%;
+  padding: calc(var(--header-h) + 1rem) 1.6rem 2rem;
+  max-width: 640px;   /* keep name comfortably inside the crisp image */
 }
 .hero .eyebrow {
   color: var(--accent);
   margin-bottom: 1.3rem;
 }
 .hero h1 {
-  font-family: "Poiret One", "Josefin Sans", sans-serif;
-  font-weight: 400;
-  font-size: clamp(2.6rem, 13vw, 12rem);
-  line-height: 1;
+  font-family: var(--serif);
+  font-size: clamp(3rem, 6.5vw, 6rem);
+  line-height: 1.02;
   color: #fff;
   margin: 0;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.65);
-  white-space: nowrap;
+  letter-spacing: 0.01em;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55), 0 6px 40px rgba(0, 0, 0, 0.35);
+  white-space: nowrap;   /* Lauren Gorman stays on one line */
 }
 
 /* Social icon row at the bottom of the hero */
