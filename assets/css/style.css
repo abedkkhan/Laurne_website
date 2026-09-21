@@ -339,7 +339,7 @@ em { color: var(--text); font-style: italic; }
 /* ---------- About ---------- */
 .about-grid {
   display: grid;
-  grid-template-columns: minmax(280px, 360px) 1fr;
+  grid-template-columns: 1fr minmax(280px, 360px);   /* bio | portrait */
   gap: 3.5rem;
   align-items: start;
   max-width: 1040px;
@@ -350,8 +350,6 @@ em { color: var(--text); font-style: italic; }
   position: sticky;
   top: calc(var(--header-h) + 1.5rem);
 }
-/* Reorder so the portrait sits on the LEFT even though the bio comes first in HTML (better for accessibility) */
-.about-portrait { order: -1; }
 .about-portrait img {
   width: 100%;
   aspect-ratio: 3 / 4;
