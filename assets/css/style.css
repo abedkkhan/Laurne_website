@@ -338,14 +338,20 @@ em { color: var(--text); font-style: italic; }
 
 /* ---------- About ---------- */
 .about-grid {
-  display: block;
-  max-width: 720px;
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) 1fr;
+  gap: 3.5rem;
+  align-items: start;
+  max-width: 1040px;
   margin: 0 auto;
 }
 .about-portrait {
-  max-width: 440px;
-  margin: 4rem auto 0;
+  max-width: 360px;
+  position: sticky;
+  top: calc(var(--header-h) + 1.5rem);
 }
+/* Reorder so the portrait sits on the LEFT even though the bio comes first in HTML (better for accessibility) */
+.about-portrait { order: -1; }
 .about-portrait img {
   width: 100%;
   aspect-ratio: 3 / 4;
@@ -679,7 +685,7 @@ textarea { resize: vertical; }
   .music-grid,
   .contact-grid { grid-template-columns: 1fr; gap: 2.4rem; }
 
-  .about-portrait { max-width: 400px; margin: 0 auto; }
+  .about-portrait { max-width: 340px; margin: 0 auto; position: static; }
   .lessons { padding: 2.5rem 2rem; margin-top: 3.5rem; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
 
